@@ -1,0 +1,28 @@
+﻿// Views/Notification/_NotificationList.cshtml
+@model IEnumerable<EduFinal.Models.Domain.Notification.Notification>
+
+<div class="list-group">
+    @foreach (var notification in Model.OrderByDescending(n => n.Timestamp))
+    {
+        <div class="list-group-item @(notification.ReadStatus ? "bg-light" : "")" 
+             data-notification-id="@notification.ID">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-1">
+                    @if (notification.UrgencyLevel == "High")
+                    {
+                        <span class="badge bg-danger">High Priority</span>
+                    }
+                    @notification.Message
+                </h5>
+                <small>@notification.Timestamp.ToString("g")</small>
+            </div>
+            @if (!notification.ReadStatus)
+            {
+                <button class="btn btn-sm btn-primary mark-as-read" 
+                        onclick="markAsRead(@notification.ID)">
+                    Mark as Read
+                </button>
+            }
+        </div>
+    }
+</div>

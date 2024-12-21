@@ -1,0 +1,11 @@
+﻿@model EduFinal.Models.ViewModels.CourseViewModel
+
+<h2>Delete Course</h2>
+
+<p>Are you sure you want to delete the course <strong>@Model.Title</strong>?</p>
+
+<form asp-action="DeleteCourse" method="post">
+    <input type="hidden" asp-for="CourseID" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Modules" asp-route-courseId="@Model.CourseID" class="btn btn-secondary">Cancel</a>
+</form>

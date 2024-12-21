@@ -1,0 +1,33 @@
+﻿@model IEnumerable<EduFinal.Models.ViewModels.ModuleViewModel>
+
+<h2>Modules</h2>
+
+@if (Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Difficulty</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var module in Model)
+        {
+            <tr>
+                <td>@module.Title</td>
+                <td>@module.Difficulty</td>
+                <td>
+                    <a asp-action="AddActivity" asp-route-moduleId="@module.ModuleID" class="btn btn-primary">Add Activity</a>
+                    <a asp-action="Details" asp-route-moduleId="@module.ModuleID" class="btn btn-info">View Details</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No modules available for this course.</p>
+}

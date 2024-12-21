@@ -1,0 +1,36 @@
+﻿@model EduFinal.Models.ViewModels.ModuleViewModel
+
+<h3>Module: @Model.Title</h3>
+
+<p><strong>Difficulty:</strong> @Model.Difficulty</p>
+<p><strong>Content URL:</strong> <a href="@Model.ContentURL" target="_blank">@Model.ContentURL</a></p>
+
+<h4>Activities</h4>
+@if (Model.Activities?.Any() ?? false)
+{
+    <ul>
+        @foreach (var activity in Model.Activities)
+        {
+            <li>@activity.Title - @activity.ActivityType (@activity.MaxPoints Points)</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No activities available.</p>
+}
+
+<h4>Assessments</h4>
+@if (Model.Assessments?.Any() ?? false)
+{
+    <ul>
+        @foreach (var assessment in Model.Assessments)
+        {
+            <li>@assessment.Title - @assessment.TotalMarks Marks (Passing: @assessment.PassingMarks)</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No assessments available.</p>
+}

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<EduFinal.Models.ViewModels.CourseViewModel>
+
+<h2>Completed Courses</h2>
+
+@if (Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Completion Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.Title</td>
+                <td>@course.Description</td>
+                <td>@course.CompletionDate?.ToString("yyyy-MM-dd")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No completed courses to display.</p>
+}

@@ -1,0 +1,34 @@
+﻿@model EduFinal.Models.ViewModels.ActivityViewModel
+
+<h2>Add Activity</h2>
+
+<form asp-action="AddActivity" method="post">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ActivityType"></label>
+        <input asp-for="ActivityType" class="form-control" />
+        <span asp-validation-for="ActivityType" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MaxPoints"></label>
+        <input asp-for="MaxPoints" type="number" class="form-control" />
+        <span asp-validation-for="MaxPoints" class="text-danger"></span>
+    </div>
+
+    <input type="hidden" asp-for="ModuleID" />
+    <input type="hidden" asp-for="CourseID" />
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>

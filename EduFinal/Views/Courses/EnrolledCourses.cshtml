@@ -1,0 +1,34 @@
+﻿@model IEnumerable<EduFinal.Models.ViewModels.CourseViewModel>
+
+<h2>Enrolled Courses</h2>
+
+@if (Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.Title</td>
+                <td>@course.Description</td>
+                <td>@course.EnrollmentStatus</td>
+                <td>
+                    <a asp-action="Modules" asp-route-courseId="@course.CourseID" class="btn btn-info">View Modules</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>You are not enrolled in any courses.</p>
+}
